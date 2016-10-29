@@ -41,9 +41,11 @@
 				tO = setTimeout(sStart, settings.startTime);
 
 				function sStart() {
+                    //console.log('startingScramble');
 					//console.log(tO);
 					//console.log('started');
 					clearTimeout(tO);
+                    tO = null;
 					oldI = [];
 					newI = [];
 					var $childElements = $(sEl).children().addClass('old');
@@ -80,7 +82,6 @@
 							cancelAnimationFrame(oldI[n]);
 							$thisChild.remove();
 						} else {
-							//console.log($thisChild.text());
 							var thisText = $thisChild.text();
 							var newText = '';
 							if (thisText.length > 1) {
@@ -96,7 +97,19 @@
 								  }
 								}*/
 							} else {
+                                var $removedParent = $thisChild.parent();
 								$thisChild.text('').remove();
+                                if ($removedParent.text() == $nextString.text() && tO === null) {
+                                    //console.log('the texts are equal!');
+									$nextString = ($nextString.next().length > 0 ? $nextString.next() : $firstString);
+									//console.log($firstString);
+									//console.log('new timeout set');
+									tO = setTimeout(sStart, settings.interval);
+									//console.log('yay theyre the same!');
+								} else {
+									//console.log('text not equal: ' + $removedParent.text());
+								}
+                                //console.log('removed');
 							}
 						}
 					}
@@ -115,6 +128,7 @@
 						return;
 					} else {
 						if ($thisChild.text() == s) {
+                            //console.log('it equals');
 							cancelAnimationFrame(newI[n]);
 							if ($thisChild.parent().text().length >= $nextString.text().length) {
 								newI[0] = requestAnimationFrame(function() {
@@ -123,10 +137,12 @@
 							}
 						} else {
 							if ($thisChild.text().length == s.length) {
+                            //console.log('same length');
 								//console.log(s);
 								//console.log('somehow happened');
 								cancelAnimationFrame(newI[n]);
 								if ($thisChild.parent().text().length >= $nextString.text().length) {
+                                    //console.log('one more step');
 									newI[0] = requestAnimationFrame(function() {
 										revealWord($thisChild.parent().children().first().get(0), 0, $thisChild.parent().children().first().data('string'), 1);
 									});
@@ -181,7 +197,7 @@
 										revealWord($thisChild.get(0), n, s, (nOfReveal + 1));
 									});
 								}
-								if ($thisChild.parent().text() == $nextString.text()) {
+								if ($thisChild.parent().text() == $nextString.text() && tO === null) {
 									$nextString = ($nextString.next().length > 0 ? $nextString.next() : $firstString);
 									//console.log($firstString);
 									//console.log('new timeout set');
@@ -192,18 +208,17 @@
 								}
 							}
 							if (nOfReveal == s.length) {
+                                //console.log('this is revealed');
 								$thisChild.text(s).addClass('revealed');
 								cancelAnimationFrame(newI[n]);
-								if ($thisChild.next().length > 0) {
+								if ($thisChild.next().length > 0 && !$thisChild.next().hasClass('old')) {
 									newI[n + 1] = requestAnimationFrame(function() {
 										revealWord($thisChild.next().get(0), n + 1, $thisChild.next().data('string'), 1);
 									});
 								}
-								/*console.log('this jquery element html');
-								console.log($thisChild.parent().text());
-								console.log('original jquery element html');
-								console.log($nextString.text());*/
+                                
 								if ($thisChild.parent().text() == $nextString.text()) {
+                                    //console.log('the texts are equal!');
 									$nextString = ($nextString.next().length > 0 ? $nextString.next() : $firstString);
 									//console.log($firstString);
 									//console.log('new timeout set');
