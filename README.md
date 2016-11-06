@@ -22,7 +22,7 @@ jQuery
 ```
 ###Description
 
-You must call scramble on an empty container where you would like the words to appear. You *MUST* define a textClass in order for scramble to work. Each text must be within a `<span>` element within the container with the textClass. This allows for multi-colored phrases to be used. For example, if you want a phrase with two different colors, you can use<br>`<div class="textClass"><span>Phrase color one </span><span>phrase color two.</span></div>`.
+You must call scramble on an empty container where you would like the words to appear. You **MUST** define a textClass in order for scramble to work. Each text must be within a `<span>` element within the container with the textClass. This allows for multi-colored phrases to be used. For example, if you want a phrase with two different colors, you can use<br>`<div class="textClass"><span>Phrase color one </span><span>phrase color two.</span></div>`.
 
 ###Example
 
@@ -49,7 +49,7 @@ You must call scramble on an empty container where you would like the words to a
 
 Options     | Definition
 ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-`textClass` | *(required)*<br>Class of the word containers.<br>The words will appear in the order they are in the DOM.
+`textClass` | **(required)**<br>Class of the word containers.<br>The words will appear in the order they are in the DOM.
 `possible`  | Possible string scramble can pull from before displaying the correct letter.<br>Does not have to include the letters in the string it is displaying. <br>`default: 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz'`
 `frames`    | Scramble uses `requestAnimationFrame` to go through the possible string.<br>This is the number of frames scramble will go through before finding another random letter from `possible`.<br>`default: 0`
 `startTime` | Delay before scramble starts, in milliseconds.<br>`default: 5000`
