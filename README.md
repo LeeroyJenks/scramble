@@ -1,5 +1,5 @@
 # scramble
-A jQuery plugin that scrambles from one text to the next.
+A jQuery plugin that scrambles from one text to the next. Allows for multi-colored multi-element text.
 
 ##Demo
 [plugins.getdans.info/scramble](http://plugins.getdans.info/scramble)
