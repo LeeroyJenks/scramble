@@ -27,7 +27,7 @@ You must call scramble on an empty container where you would like the words to a
 ###Example
 
 ```html
-<div class="word-container"></div>
+<div class="display-word"></div>
 <ul>
     <li class="word"><span>Word 1.</span></li>
     <li class="word"><span>Phrase </span><span>one</span></li>
@@ -38,7 +38,7 @@ You must call scramble on an empty container where you would like the words to a
 
 <script>
     $(document).ready(function(){
-        $('.word-container').scramble({
+        $('.display-word').scramble({
             textClass: '.word'
         });
     });
