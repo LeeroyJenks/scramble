@@ -1,16 +1,16 @@
 # scramble
 A jQuery plugin that scrambles from one text to the next. Allows for multi-colored multi-element text.
 
-##Demo
+## Demo
 [plugins.getdans.info/scramble](http://plugins.getdans.info/scramble)
 
-##Installation
+## Installation
 Download from GitHub
 
-###Requirements
+### Requirements
 jQuery
 
-###Use
+### Use
 ```html
 <script>
     $(document).ready(function(){
@@ -20,11 +20,11 @@ jQuery
     });
 </script>
 ```
-###Description
+### Description
 
 You must call scramble on an empty container where you would like the words to appear. You **MUST** define a textClass in order for scramble to work. Each text must be within a `<span>` element within the container with the textClass. This allows for multi-colored phrases to be used. For example, if you want a phrase with two different colors, you can use<br>`<div class="textClass"><span>Phrase color one </span><span>phrase color two.</span></div>`.
 
-###Example
+### Example
 
 ```html
 <div class="display-word"></div>
@@ -45,7 +45,7 @@ You must call scramble on an empty container where you would like the words to a
 </script>
 ```
 
-###Options
+### Options
 
 Options     | Definition
 ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
